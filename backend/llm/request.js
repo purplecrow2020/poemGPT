@@ -8,6 +8,7 @@
  * @returns {Promise<object> | null} - A promise that resolves to the OpenAI API response.
  */
 async function callOpenAI(openAIClient, reqParams) {
+    console.log("reqParams", reqParams);
     try {
         const {
             stream = false,
@@ -18,7 +19,7 @@ async function callOpenAI(openAIClient, reqParams) {
             model,
             messages: [{ role: 'user', content: prompt }],
         };
-
+        console.log("PAYLOAD",  payload);
         if (stream) {
             payload.stream = true;
         }

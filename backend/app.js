@@ -53,7 +53,7 @@ io.on(socketEventsENUM.CONNECT, (socket) => {
                 continue;
             }
 
-            const formattedMessageContent = formatTextResponseToRenderHTML(part);
+            const formattedMessageContent = LLMResponseHandler.formatTextResponseToRenderHTML(part);
             socket.emit(socketEventsENUM.POEM_GENERATED, formattedMessageContent);
         }
     });
@@ -69,7 +69,6 @@ io.on(socketEventsENUM.CONNECT, (socket) => {
                 context: poem,
             }),
         });
-
         const emotionWisePercentageJSON = LLMResponseHandler.transformEmotionalAnalysisResponseToJSON(response.choices[0]?.message.content);
         socket.emit(socketEventsENUM.POEM_EMOTION_ANALYSIS, emotionWisePercentageJSON);
     });

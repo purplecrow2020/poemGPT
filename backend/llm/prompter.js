@@ -15,13 +15,9 @@ function generatePrompt({
 }) {
     switch (task) {
         case llmTasksENUM.GENERATE_POEM:
-            return generatePoemPrompt({
-                context,
-            });
+            return getPromptToGeneratePoem(context);
         case llmTasksENUM.ANALYSE_POEM_EMOTIONS:
-            return generatePoemGeneratorPrompt({
-                context,
-            });
+            return getPromptToAnalysePoemEmotions(context);
         default:
             console.error("Invalid task", task);
             return null;
